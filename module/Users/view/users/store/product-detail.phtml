@@ -1,0 +1,90 @@
+<section class="store-order">
+   <h2></h2>
+  <?php if ($this->error): ?>
+   <p class="error">
+    Il y avait un ou plusieurs des problèmes avec votre soumission.
+    Corrigez-les S'il vous plaît comme Indiqué ci-dessous.
+   </p>
+   <?php endif ?>
+
+<div>
+<?php
+ // /users/user-manager/index.phtml:
+
+ //$title = 'Product';
+ //$this->headTitle($title);
+ ?>
+ <h1><?php //echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?php echo  $this->url('store', array('action'=>'add'));?>">Ajouter un produit</a>
+ </p>
+
+ <table class="table">
+ <tr>
+     <th> Product Info</th>    
+     
+ </tr>
+ <?php //foreach ($store_product1 as $product) : ?>
+ <?php //echo var_dump($store_product1); ?>
+ <tr>
+    <td><?php echo $this->escapeHtml($store_product1->id);?><br>
+     <?php echo $this->escapeHtml($store_product1->name);?><br>
+     <?php echo $this->escapeHtml($store_product1->desc);?><br>
+     <?php echo $this->escapeHtml($store_product1->cost);?> €</td>
+     
+ </tr>
+ <?php // endforeach; ?>
+ </table>
+</div>
+<hr>
+
+<div>
+   
+   
+   <?php
+       $form = $this->form;
+       $form->prepare();
+       $form->setAttribute('action', $this->url(NULL, array('controller'=>'store1', 'action' => 'process')));
+       $form->setAttribute('method', 'post');
+       echo $this->form()->openTag($form);
+    ?>
+
+     <dl class="zend_form">
+     <dt><?php // echo $this->formLabel($form->get('name')); ?></dt>
+     <dd><?php
+      echo $this->formElement($form->get('name'));
+   
+     echo $this->formElementErrors($form->get('name'));
+     ?></dd>
+     <dt><?php //echo $this->formLabel($form->get('desc')); ?></dt>
+    <dd><?php
+     echo $this->formElement($form->get('desc'));
+     echo $this->formElementErrors($form->get('desc'));
+     ?></dd>
+    
+    
+    <dt><?php //echo $this->formLabel($form->get('cost')); ?></dt>
+    <dd><?php
+     echo $this->formElement($form->get('cost'));
+     echo $this->formElementErrors($form->get('cost'));
+     ?></dd>
+    
+    <dt><?php echo $this->formLabel($form->get('qty')); ?></dt>
+    <dd><?php
+     echo $this->formElement($form->get('qty'));
+     echo $this->formElementErrors($form->get('qty'));
+     ?></dd>
+     
+     <dd><?php
+     echo $this->formElement($form->get('submit'));
+     echo $this->formElementErrors($form->get('submit'));
+     ?></dd>
+     </dl>
+
+
+     <?php echo $this->form()->closeTag() ?>
+   
+   
+</div>
+
+</section>

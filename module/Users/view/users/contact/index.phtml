@@ -1,0 +1,44 @@
+<section class="contact">
+   <h2>Contactez-moi par Mail </h2>
+  <?php if ($this->error): ?>
+   <p class="error">
+    Il y avait un ou plusieurs des problèmes avec votre soumission.
+    Corrigez-les S'il vous plaît comme Indiqué ci-dessous.
+   </p>
+   <?php endif ?>
+
+
+    <?php
+       $form = $this->form;
+       $form->prepare();
+       $form->setAttribute('action', $this->url(NULL, array('controller'=>'Contact', 'action' => 'process')));
+       $form->setAttribute('method', 'post');
+       echo $this->form()->openTag($form);
+    ?>
+
+     <dl class="zend_form">
+     <dt><?php echo $this->formLabel($form->get('name')); ?></dt>
+     <dd><?php
+     echo $this->formElement($form->get('name'));
+     echo $this->formElementErrors($form->get('name'));
+     ?></dd>
+     <dt><?php echo $this->formLabel($form->get('email')); ?></dt>
+    <dd><?php
+     echo $this->formElement($form->get('email'));
+     echo $this->formElementErrors($form->get('email'));
+     ?></dd>
+     <dt><?php echo $this->formLabel($form->get('message')); ?></dt>
+     <dd><?php
+     echo $this->formElement($form->get('message'));
+     echo $this->formElementErrors($form->get('message'));
+     ?></dd>
+     
+     <dd><?php
+     echo $this->formElement($form->get('envoyer'));
+     echo $this->formElementErrors($form->get('envoyer'));
+     ?></dd>
+     </dl>
+
+
+     <?php echo $this->form()->closeTag() ?>
+</section>

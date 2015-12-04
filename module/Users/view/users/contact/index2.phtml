@@ -1,0 +1,32 @@
+
+<div class="row">
+      <div class="col-md-6">
+          <h1> Contactez-moi par Email </h1>
+
+
+    <?php
+                
+                $form = $this->form;
+                $form->prepare();
+                //$form->setAttribute('action', $this->url('contact', array('action'=>'index')));
+                $form->setAttribute('action', $this->url(NULL, array('controller'=>'contact', 'action' => 'index')));
+                //$form->prepare();
+
+
+                echo $this->form()->openTag($form);
+                echo $this->formRow($form->get('name')) . "</br>";
+                echo $this->formRow($form->get('email_adress')) . "</br>"; 
+                echo $this->formRow($form->get('massage')) . "</br>";
+
+                echo $this->formRow($form->get('Envoyer')) . "</br>";
+                echo $this->form()->closeTag();
+
+
+
+     ?>
+     </div>
+     <div  class="col-md-6">
+      <h1> Step by !</h1>
+
+
+    </div>
